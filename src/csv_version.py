@@ -1,5 +1,9 @@
+import math
+
 import pandas as pd
 from collections import defaultdict
+from itertools import permutations
+import time
 
 file_path = "Lost Ark - secret resake tech.csv"
 df = pd.read_csv(file_path)
@@ -22,7 +26,6 @@ member_unavailability = {
     for member, days in member_unavailability.items()
 }
 
-raids = []
 
 raids = []
 for i in range(0, len(df), 2):
@@ -36,7 +39,7 @@ for i in range(0, len(df), 2):
             "name": raid_row[col].strip(),
             "class": class_row[col].strip(),
         }
-        for col in df.columns[1:9]
+        for col in df.columns[1:18]
         if pd.notna(raid_row[col]) and pd.notna(class_row[col])
     ]
 
@@ -134,7 +137,7 @@ def schedule_raids(raids, days_of_week, max_raids_per_day=8, max_backtrack_attem
     # If there are still unscheduled raids after two backtracking attempts, increase max raids per day
     if not success and backtrack_attempts >= max_backtrack_attempts:
         print(f"Could not schedule all raids after {max_backtrack_attempts} backtracking attempts. Increasing max raids per day.")
-        max_raids_per_day += 4  # Increase max raids per day by 2
+        max_raids_per_day += 3  # Increase max raids per day by 3
         # Retry scheduling with the updated max raids per day
         scheduled_raids = defaultdict(list)
         failed_raids = []
@@ -181,39 +184,144 @@ result_df = pd.DataFrame(raids)
 
 
 grouped_raids = result_df.groupby('timeslot')
-html_output = ""
-for timeslot, group in grouped_raids:
-    html_output += f"<h2>Timeslot: {timeslot}</h2>"
-    html_output += group.to_html(index=False)
 
-with open("grouped_raids.html", "w") as f:
-    f.write(html_output)
-
-
-test_df = pd.DataFrame(grouped_raids)
 
 for timeslot, group in grouped_raids:
+
     print(f"Timeslot: {timeslot}")
-    print(group, "\n")
+    print(group.reset_index(drop=True), "\n")
 
-expanded_rows = []
 
-# Loop over each timeslot group
-for timeslot, group in grouped_raids:
-    # For each group, prepare the columns for the raid's members
-    for _, row in group.iterrows():
-        expanded_row = {'timeslot': timeslot, 'name': row['name']}
+def get_names(raid):
+    return list(set([row for rows in raid for row in rows]))
 
-        # Add each member's name and class (combined with ':') to its own column
-        for i, member in enumerate(row['members']):
-            expanded_row[f"member_{i+1}"] = f"{member['name']}:{member['class']}"
 
-        # Append the expanded row to the list
-        expanded_rows.append(expanded_row)
+def get_raid(grouped_raids, day):
+    return grouped_raids[["name", "members", "timeslot"]].apply(lambda x: x).loc[day]["members"].apply(lambda x: [list(d.values())[0] for d in x]).reset_index(drop=True)
 
-# Convert the list of expanded rows into a new DataFrame
-expanded_df = pd.DataFrame(expanded_rows)
+def get_raid_with_class(grouped_raids, day):
+    return grouped_raids[["name", "members", "timeslot"]].apply(lambda x: x).loc[day]["members"].apply(lambda x: [list(d.values()) for d in x]).reset_index(drop=True)
 
-# Save the expanded DataFrame to a CSV file
-expanded_csv_filename = 'grouped_raids_expanded_combined_columns.csv'
-expanded_df.to_csv(expanded_csv_filename, index=False)
+def get_raid_names(grouped_raids, day):
+    return grouped_raids[["name", "members", "timeslot"]].apply(lambda x: x).loc[day]["name"].reset_index(drop=True)
+def distance(name, raid_day):
+    d = 0
+    not_in_raid = 0
+    for i,raid in enumerate(raid_day):
+        if name in raid:
+            for raid2 in raid_day[i:]:
+                if name in raid2:
+                    d+=not_in_raid
+                    not_in_raid = 0
+                else:
+                    not_in_raid+=1
+            return d
+
+def total_distance2(raid_day, list_of_names, best):
+    total_dist = 0
+    for name in list_of_names:
+        dist = distance(name, raid_day)
+        total_dist += dist
+        if total_dist >= best:
+            return float("inf")
+    return total_dist
+def total_distance(raid_day):
+    all_names = set(name for raid in raid_day for name in raid)
+    return sum(distance(name, raid_day) for name in all_names)
+def optimal_permutation(raid, list_of_names):
+
+    min_distance = float("inf")
+    optimal_order = None
+    for perm in permutations(raid):
+        dist = total_distance2(perm, list_of_names, min_distance)
+        if dist < min_distance:
+            min_distance = dist
+            optimal_order = perm
+    return min_distance, optimal_order
+
+
+def optimal_perm_for_day(grouped_raids, day):
+    raid = get_raid(grouped_raids, day)
+    names = get_names(raid)
+    return optimal_permutation(raid, names)
+
+
+# Branch-and-bound function
+def branch_and_bound(series):
+    n = len(series)
+    best_distance = float('inf')
+    best_permutation = None
+    perm = []
+
+    def bound(partial_permutation):
+        """Compute a lower bound for the partial permutation."""
+        partial_distance = total_distance(partial_permutation)
+        # Minimal estimate for remaining distances
+        return partial_distance
+
+    def recurse(partial_permutation, current_perm):
+        nonlocal best_distance, best_permutation, perm
+
+        # If the permutation is complete, calculate its total distance
+        if len(partial_permutation) == n:
+            total_dist = total_distance(partial_permutation)
+            if total_dist < best_distance:
+                best_distance = total_dist
+                best_permutation = partial_permutation
+                perm = current_perm
+            return
+
+        # Check bound for the current partial permutation
+        if bound(partial_permutation) >= best_distance:
+            return  # Prune this branch
+
+        # Branch: Extend the permutation by adding each remaining element
+        for i,next_element in enumerate(series):
+            if next_element not in partial_permutation:
+                recurse(partial_permutation + [next_element], current_perm + [i])
+
+    # Start the recursive branching
+    recurse([], [])
+
+    return best_distance, best_permutation, perm
+
+
+
+start = time.time()
+min_distance, optimal_order, permutation = branch_and_bound(get_raid(grouped_raids, "Fri"))
+print("Optimal Order:", optimal_order)
+print("Minimum Distance:", min_distance)
+print("Permutation:", permutation)
+end = time.time()
+print(end - start)
+print(get_raid_with_class(grouped_raids, "Fri").reindex(permutation).reset_index(drop=True))
+print(get_raid_names(grouped_raids, "Fri").reindex(permutation).reset_index(drop=True))
+html_output = ""
+expanded_row = []
+df = pd.DataFrame(columns=["timeslot", "name", "members"])
+for timeslot, _ in grouped_raids:
+    min_distance, optimal_order, permutation = branch_and_bound(get_raid(grouped_raids, timeslot))
+    raid_names = get_raid_names(grouped_raids, timeslot).reindex(permutation).reset_index(drop=True)
+    name_and_class = get_raid_with_class(grouped_raids, timeslot).reindex(permutation).reset_index(drop=True)
+    html_output += f"<h2>Timeslot: {timeslot}</h2>"
+    html_output += pd.concat([raid_names, name_and_class], axis=1).to_html(index=False)
+    print(df)
+    df = pd.concat([df, pd.concat([pd.Series([timeslot] * len(raid_names), name="timeslot"), raid_names, name_and_class], axis=1)], ignore_index=True)
+    print(pd.concat([pd.Series([timeslot] * len(raid_names), name="timeslot"), raid_names, name_and_class], axis=1))
+
+
+
+print(df["members"])
+max_length = df['members'].apply(len).max()  # Find the longest list
+expanded_lists = pd.DataFrame(df['members'].tolist(), columns=[f'member{i+1}' for i in range(max_length)])
+
+# Concatenate the expanded lists with the original DataFrame
+df_expanded = pd.concat([df.drop(columns=['members']), expanded_lists], axis=1)
+
+# Save the DataFrame to a CSV file
+df_expanded.to_csv('result_schedule.csv', index=False)
+
+
+
+with open("result_schedule.html", "w") as f:
+    f.write(html_output)

@@ -1,0 +1,26 @@
+timeslot,name,member1,member2,member3,member4,member5,member6,member7,member8,member9,member10,member11,member12,member13,member14
+Fri,Echidna,"['Suzu', 'Bard']","['Lily', 'Sorc']","['Krabby', 'Arcana2']","['Kim', 'Breaker']","['Sahra', 'Paladin']","['Oxy', 'Soup2']","['Nezu', 'Sorc3']","['Michi', 'Reaper']",,,,,,
+Fri,Aegir NM,"['Pats', 'Bard3']","['Tobi', 'Reaper']","['Suzu', 'DB']","['Akido', 'Aero']","['Nezu', 'Sorc3']","['Oxy', 'Soup']","['Sahra', 'SH']",,,,,,,
+Fri,Thaemine G4,"['Suzu', 'Bard']","['Lily', 'Sorc']","['Krabby', 'Arcana2']","['Kim', 'Breaker']","['Pats', 'Bard3']","['Tobi', 'Reaper2']","['Thug', 'Destro']","['Akido', 'Breaker']",,,,,,
+Fri,Thaemine G4,"['Alice', 'Artist']","['Tobi', 'Reaper']","['Pats', 'GS']","['Suzu', 'DB']","['Lily', 'Bard2']","['Resake', 'Breaker']","['Krabby', 'WD']","['Akido', 'SF2']",,,,,,
+Mon,Echidna,"['Nezu', 'Paladin']","['Akido', 'Sf']","['Oxy', 'WD']","['Lenn', 'Soup']","['Sahra', 'Artist']","['Suzu', 'Slayer']","['Neo', 'Scrapper']","['Resake', 'Breaker']",,,,,,
+Mon,Echidna,"['Akido', 'Paladin']","['Resake', 'Soup']","['Suzu', 'Arcana']","['Lenn', 'Deadge']","['Kim', 'Bard']","['Sahra', 'Slayer']","['Nezu', 'Soup']","['Oxy', 'WD2']",,,,,,
+Sat,Aegir HM,"['Tobi', 'Slayer']","['Pats', 'GS']","['Lenn', 'DB']","['Suzu', 'Bard']","['Kim', 'Breaker']","['Lily', 'Sorc']","['Krabby', 'Arcana2']",,,,,,,
+Sat,Thaemine G4,"['Pats', 'Artist']","['Tobi', 'Slayer']","['Alice', 'GS']","['Lenn', 'Soup']","['Krabby', 'Pally']","['Thug', 'GL']","['Kim', 'DB']","['Lily', 'Reaper']",,,,,,
+Sat,Thaemine G4,"['Lily', 'Bard']","['Krabby', 'Arcana']","['Alice', 'Aero']","['Kim', 'SF']","['Suzu', 'Artist']","['Lenn', 'Soup2']","['Thug', 'Breaker']","['Akido', 'Aero']",,,,,,
+Sat,Thaemine G4,"['Pats', 'Bard2']","['Tobi', 'DB2']","['Lenn', 'Deadeye']","['Akido', 'SF']","['Lily', 'Artist']","['Thug', 'WD']","['Krabby', 'Aero']","['Suzu', 'Arcana2']",,,,,,
+Sat,Thaemine G4,"['Akido', 'Pala']","['Resake', 'Soup']","['Thug', 'Scrapper']","['Alice', 'Arcana']","['Pats', 'Bard4']","['Tobi', 'Breaker']","['Lenn', 'Reaper']",,,,,,,
+Sat,Thaemine G4,"['Alice', 'Artist2']","['Lily', 'Arcana']","['Kim', 'SF2']","['Lenn', 'DB']","['Akido', 'Artist']","['Suzu', 'Slayer']","['Resake', 'Soup2']",,,,,,,
+Sat,Thaemine G4,"['Pats', 'Bard']","['Tobi', 'DB']","['Suzu', 'Arcana']","['Alice', 'Glaivier']","['Kim', 'Artist']","['Resake', 'DB']","['Lenn', 'Slayer']",,,,,,,
+Sat,Aegir HM,"['Pats', 'Bard2']","['Tobi', 'DB2']","['Lenn', 'Deadge']","['Kim', 'Sf']","['Nezu', 'Paladin']","['Akido', 'Sf']","['Resake', 'Soup']",,,,,,,
+Sun,Echidna,"['Lily', 'Bard']","['Neo', 'Sorc']","['Krabby', 'Arcana']","['Kim', 'DB']","['Akido', 'Breaker']","['Michi', 'Soup']","['Resake', 'DB']",,,,,,,
+Sun,Echidna,"['Krabby', 'Pally']","['Lily', 'Reaper']","['Lenn', 'DB']","['Neo', 'GL']","['Kim', 'Artist']","['Sahra', 'SH']","['Michi', 'Breaker']","['Oxy', 'Soup']",,,,,,
+Sun,behemoth,"['Pats', 'Bard']","['Tobi', 'DB']","['Suzu', 'Arcana']","['Lenn', 'Soup']","['Sahra', 'Artist']","['Michi', 'Reaper']","['Nezu', 'Sorc3']","['Kim', 'Artist']","['Resake', 'Breaker']","['Oxy', 'Soup']","['Lily', 'Bard2']","['Neo', 'Soup']","['Krabby', 'WD']","['Akido', 'SF2']"
+Sun,behemoth,"['Pats', 'Artist']","['Tobi', 'Breaker']","['Kim', 'SF2']","['Akido', 'Pally']","['Oxy', 'WD']","['Resake', 'Soup']","['Nezu', 'Sorc']","['Lily', 'Artist']","['Neo', 'Breaker']","['Krabby', 'Aero']","['Suzu', 'Arcana2']","['Sahra', 'Pala']","['Michi', 'Soup']","['Lenn', 'Slayer']"
+Sun,behemoth,"['Pats', 'Bard4']","['Tobi', 'Reaper2']","['Suzu', 'Slayer']","['Lenn', 'Soup2']","['Sahra', 'Slayer']","['Nezu', 'Breaker']","['Oxy', 'Soup2']","['Lily', 'Bard']","['Kim', 'Breaker']","['Neo', 'Sorc']","['Krabby', 'Arcana']","['Akido', 'Breaker']","['Resake', 'DB']","['Michi', 'SH']"
+Sun,behemoth,"['Pats', 'Bard3']","['Tobi', 'Reaper']","['Akido', 'Aero']","['Suzu', 'DB']","['Neo', 'Pally']","['Lily', 'Arcana']","['Kim', 'SF']","['Lenn', 'DB']","['Nezu', 'Pally']","['Michi', 'Breaker']","['Sahra', 'SH']","['Resake', 'Soup2']","['Oxy', 'WD2']",
+Sun,behemoth,"['Pats', 'Bard2']","['Tobi', 'DB2']","['Sahra', 'Soup']","['Lenn', 'Deadge']","['Suzu', 'Bard']","['Lily', 'Sorc']","['Krabby', 'Arcana2']","['Akido', 'Sf']","['Kim', 'Bard']","['Nezu', 'Sorc2']","['Neo', 'Scrapper']",,,
+Sun,behemoth,"['Suzu', 'Artist']","['Tobi', 'Slayer']","['Pats', 'GS']","['Sahra', 'DB']","['Akido', 'Artist']","['Resake', 'Sorc']","['Nezu', 'Soup']","['Lenn', 'Reaper']","['Krabby', 'Pally']","['Lily', 'Reaper']","['Kim', 'DB']","['Neo', 'GL']","['Michi', 'Berzerker']",
+Sun,Echidna,"['Lily', 'Bard2']","['Neo', 'Soup']","['Krabby', 'WD']","['Kim', 'SF2']","['Suzu', 'Artist']","['Sahra', 'Soup']","['Resake', 'Sorc']","['Akido', 'Aero']",,,,,,
+Sun,Echidna,"['Lily', 'Artist']","['Neo', 'Breaker']","['Krabby', 'Aero']","['Suzu', 'Arcana2']","['Akido', 'Artist']","['Resake', 'Soup2']","['Michi', 'SH']","['Nezu', 'Breaker']",,,,,,
+Sun,Echidna,"['Neo', 'Paladin']","['Lily', 'Arcana']","['Kim', 'Sf']","['Suzu', 'DB']","['Nezu', 'Sorc2']","['Akido', 'SF2']","['Michi', 'Berzerker']",,,,,,,
