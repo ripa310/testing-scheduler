@@ -1,37 +1,37 @@
-Timeslot,Raid,Member Names,Member Classes
-Fri,Aegir NM,"Pats, Tobi, Suzu, Thug, Sahra, Nezu","Bard3, Reaper, DB, GL, DB, Sorc3"
-Fri,Aegir HM,"Pats, Tobi, Suzu, Lenn, Nezu, Akido, Thug","Bard, DB, Arcana, Soup, Paladin, Sf, Breaker"
-Sat,Aegir NM,"Pats, Tobi, Akido, Kim, Lily, Suzu, Neo, Krabby","Artist, Breaker, Aero, SF2, Artist, Arcana2, Breaker, Aero"
-Sat,Thaemine G4,"Suzu, Lily, Krabby, Kim, Pats, Tobi, Thug, Akido","Bard, Sorc, Arcana2, Breaker, Bard4, Reaper2, GL, Breaker"
-Sat,Thaemine G4,"Pats, Tobi, Kim, Lenn, Krabby, Neo, Suzu, Lily","Bard3, Reaper, DB, Deadeye, Pally, Gl, DB, Reaper"
-Sat,Thaemine G4,"Pats, Tobi, Lenn, Akido, Lily, Neo, Krabby, Suzu","Bard2, DB2, Soup, Aero, Artist, Breaker, Aero, Arcana2"
-Sun,behemoth,"Pats, Tobi, Suzu, Lenn, Sahra, Michi, Nezu, Thug, Kim, Resake, Alice, Oxy, Lily, Neo, Krabby, Akido","Bard, DB, Arcana, Soup, Artist, Reaper, DPS, WD, Artist, Breaker, Aero, Soup, Bard2, Soup, WD, SF2"
-Sun,behemoth,"Pats, Tobi, Alice, Kim, Akido, Oxy, Resake, Nezu, Lily, Neo, Krabby, Suzu, Sahra, Thug, Michi, Lenn","Artist, Breaker, GS, SF2, Pally, WD, Soup, DPS, Artist, Breaker, Aero, Arcana2, Pala, GL, Soup, Slayer"
-Sun,behemoth,"Pats, Tobi, Suzu, Lenn, Nezu, Sahra, Thug, Oxy, Lily, Kim, Neo, Krabby, Alice, Akido, Resake, Michi","Bard4, Reaper2, Slayer, Soup2, Supp, DB, Destro, Soup2, Bard, Breaker, Sorc, Arcana, Artist2, Breaker, DB, SH"
-Sun,behemoth,"Pats, Tobi, Alice, Thug, Neo, Lily, Kim, Lenn, Suzu, Resake, Nezu, Akido, Michi, Sahra","Bard2, DB2, Arcana, Scrapper, Pally, Arcana, SF, DB, Artist, Soup2, DPS, Aero, Breaker, Soup"
-Sun,behemoth,"Pats, Tobi, Alice, Lenn, Suzu, Lily, Krabby, Akido, Kim, Thug, Nezu, Neo, Sahra","Bard3, Slayer, Glaive, Deadge, Bard, Sorc, Arcana2, Sf, Bard, Breaker, DPS, Scrapper, SH"
-Sun,behemoth,"Alice, Tobi, Pats, Suzu, Akido, Sahra, Nezu, Lenn, Krabby, Lily, Kim, Neo, Thug, Resake, Oxy, Michi","Artist, Reaper, GS, DB, Artist, Slayer, DPS, Reaper, Pally, Reaper, DB, GL, Bard, Sorc, WD2, Berzerker"
-Sun,Aegir NM,"Pats, Tobi, Resake, Alice, Michi, Oxy, Sahra","Bard4, Reaper2, Soup2, Artist2, Berzerker, Soup, SH"
-Sun,Aegir HM,"Alice, Tobi, Pats, Lenn, Suzu, Kim, Lily, Krabby","Artist, DB2, GS, Deadge, Bard, Breaker, Sorc, Arcana2"
-Sun,Aegir HM,"Pats, Tobi, Kim, Alice, Michi, Nezu","Bard2, Slayer, DB, Arcana, Breaker, Sorc"
-Sun,Thaemine G4,"Pats, Tobi, Suzu, Thug, Akido, Resake, Alice, Neo","Bard, DB, Arcana, Breaker, Artist, Breaker, Glaivier, Scrapper"
-Sun,Thaemine G4,"Alice, Tobi, Pats, Akido, Lily, Neo, Krabby, Resake","Artist, Slayer, GS, SF2, Bard2, Soup, WD, Sorc"
-Sun,Thaemine G4,"Akido, Resake, Thug, Alice, Pats, Tobi, Kim, Suzu","Pala, Soup, Scrapper, Arcana, Artist, Breaker, Bard, Slayer"
-Thu,Thaemine,"Akido, Nezu, Suzu, Michi, Kim, Sahra, Alice, Oxy","Paladin, Sorc, Arcana, Breaker, Bard, Slayer, Glavier, WD2"
-Thu,Thaemine,"Lily, Neo, Krabby, Kim, Thug, Resake, Michi, Nezu","Bard, Sorc, Arcana, DB, Bard, Breaker, Reaper, Sorc3"
-Thu,Thaemine,"Krabby, Lily, Lenn, Neo, Kim, Sahra, Michi, Nezu","Pally, Reaper, DB, GL, Artist, SH, Soup, Soup"
-Thu,Thaemine,"Neo, Lily, Kim, Suzu, Akido, Resake, Thug, Michi","Paladin, Arcana, Sf, DB, Artist, Soup2, GL, SH"
-Thu,Thaemine,"Alice, Thug, Lenn, Sahra, Akido, Michi","Artist2, Scrapper, Deadge, DB, Breaker, Berzerker"
-Thu,Aegir NM,"Krabby, Lily, Neo, Oxy, Suzu, Akido, Michi, Nezu","Paladin, Reaper, GL, Soup2, Artist, SF2, SH, Sorc2"
-Thu,Echidna,"Thug, Akido, Oxy, Alice, Sahra, Michi, Neo","Bard, Breaker, WD2, Glaive, Paladin, Reaper, Scrapper"
-Thu,Echidna,"Akido, Suzu, Michi, Alice, Sahra, Thug","Artist, Slayer, Soup, GS, Artist, Destro"
-Wed,Thaemine,"Suzu, Lily, Krabby, Kim, Sahra, Oxy, Nezu, Thug","Bard, Sorc, Arcana2, Breaker, Paladin, Soup2, Sorc2, WD"
-Wed,Thaemine,"Nezu, Akido, Resake, Lenn, Sahra, Suzu, Neo, Alice","Paladin, Sf, Soup, Soup, Artist, Slayer, Scrapper, GS"
-Wed,Thaemine,"Lily, Neo, Krabby, Suzu, Thug, Alice, Akido","Artist, Breaker, Aero, Arcana2, Breaker, Arcana, SF2"
-Wed,Thaemine,"Lily, Neo, Krabby, Kim, Suzu, Oxy, Resake, Akido","Bard2, Soup, WD, SF2, Artist, Soup, Sorc, Aero"
-Wed,Thaemine,"Alice, Nezu, Oxy, Sahra, Thug, Resake","Artist, Breaker, WD, Soup, Destro, DB"
-Wed,Aegir HM,"Neo, Lily, Lenn, Kim, Akido, Thug, Oxy","Paladin, Arcana, DB, Sf, Paladin, Scrapper, WD"
-Wed,Thaemine G4,"Lily, Krabby, Neo, Akido, Alice, Thug, Kim, Resake","Bard, Arcana, Sorc, SF, Artist2, WD, SF2, DB"
-Wed,Thaemine G4,"Neo, Lily, Kim, Lenn, Suzu, Resake, Thug, Alice","Pala, Arcana, SF, DB, Artist, Soup2, Destro, GS"
-Wed,Aegir NM,"Lily, Neo, Krabby, Resake, Nezu","Bard2, Soup, WD, Sorc, Soup"
-Wed,Aegir HM,"Lily, Neo, Krabby, Resake, Sahra, Nezu","Bard, Sorc, Arcana, Soup, Soup, Breaker"
+Timeslot,Raid,Member1,Class1,Member2,Class2,Member3,Class3,Member4,Class4,Member5,Class5,Member6,Class6,Member7,Class7,Member8,Class8,Member9,Class9,Member10,Class10,Member11,Class11,Member12,Class12,Member13,Class13,Member14,Class14,Member15,Class15,Member16,Class16
+Fri,Aegir NM,Pats,Bard3,Tobi,Reaper,Suzu,DB,Thug,GL,Sahra,DB,Nezu,Sorc3,,,,,,,,,,,,,,,,,,,,
+Fri,Aegir HM,Pats,Bard,Tobi,DB,Suzu,Arcana,Lenn,Soup,Nezu,Paladin,Akido,Sf,Thug,Breaker,,,,,,,,,,,,,,,,,,
+Mon,G4,Lily,Bard,Krabby,Arcana,Neo,Sorc,Akido,SF,Alice,Artist2,Thug,WD,Kim,SF2,Resake,DB,,,,,,,,,,,,,,,,
+Mon,Aegir NM,Lily,Bard2,Neo,Soup,Krabby,WD,Resake,Sorc,Nezu,Soup,,,,,,,,,,,,,,,,,,,,,,
+Sat,Aegir NM,Pats,Artist,Tobi,Breaker,Akido,Aero,Kim,SF2,Lily,Artist,Suzu,Arcana2,Neo,Breaker,Krabby,Aero,,,,,,,,,,,,,,,,
+Sat,G4,Suzu,Bard,Lily,Sorc,Krabby,Arcana2,Kim,Breaker,Pats,Bard4,Tobi,Reaper2,Thug,GL,Akido,Breaker,,,,,,,,,,,,,,,,
+Sat,G4,Pats,Bard3,Tobi,Reaper,Kim,DB,Lenn,Deadeye,Krabby,Pally,Neo,Gl,Suzu,DB,Lily,Reaper,,,,,,,,,,,,,,,,
+Sat,G4,Pats,Bard2,Tobi,DB2,Lenn,Soup,Akido,Aero,Lily,Artist,Neo,Breaker,Krabby,Aero,Suzu,Arcana2,,,,,,,,,,,,,,,,
+Sun,behemoth,Pats,Bard,Tobi,DB,Suzu,Arcana,Lenn,Soup,Sahra,Artist,Michi,Reaper,Nezu,DPS,Thug,WD,Kim,Artist,Resake,Breaker,Alice,Aero,Oxy,Soup,Lily,Bard2,Neo,Soup,Krabby,WD,Akido,SF2
+Sun,behemoth,Pats,Artist,Tobi,Breaker,Alice,GS,Kim,SF2,Akido,Pally,Oxy,WD,Resake,Soup,Nezu,DPS,Lily,Artist,Neo,Breaker,Krabby,Aero,Suzu,Arcana2,Sahra,Pala,Thug,GL,Michi,Soup,Lenn,Slayer
+Sun,behemoth,Pats,Bard4,Tobi,Reaper2,Suzu,Slayer,Lenn,Soup2,Nezu,Supp,Sahra,DB,Thug,Destro,Oxy,Soup2,Lily,Bard,Kim,Breaker,Neo,Sorc,Krabby,Arcana,Alice,Artist2,Akido,Breaker,Resake,DB,Michi,SH
+Sun,behemoth,Pats,Bard2,Tobi,DB2,Alice,Arcana,Thug,Scrapper,Neo,Pally,Lily,Arcana,Kim,SF,Lenn,DB,Suzu,Artist,Resake,Soup2,Nezu,DPS,Akido,Aero,Michi,Breaker,Sahra,Soup,,,,
+Sun,behemoth,Alice,Artist,Tobi,Reaper,Pats,GS,Suzu,DB,Akido,Artist,Sahra,Slayer,Nezu,DPS,Lenn,Reaper,Krabby,Pally,Lily,Reaper,Kim,DB,Neo,GL,Thug,Bard,Resake,Sorc,Oxy,WD2,Michi,Berzerker
+Sun,Aegir NM,Pats,Bard4,Tobi,Reaper2,Resake,Soup2,Alice,Artist2,Michi,Berzerker,Oxy,Soup,Sahra,SH,,,,,,,,,,,,,,,,,,
+Sun,G4,Pats,Bard,Tobi,DB,Suzu,Arcana,Thug,Breaker,Akido,Artist,Resake,Breaker,Alice,Glaivier,Neo,Scrapper,,,,,,,,,,,,,,,,
+Sun,G4,Alice,Artist,Tobi,Slayer,Pats,GS,Akido,SF2,Lily,Bard2,Neo,Soup,Krabby,WD,Resake,Sorc,,,,,,,,,,,,,,,,
+Sun,G4,Akido,Pala,Resake,Soup,Thug,Scrapper,Alice,Arcana,Pats,Artist,Tobi,Breaker,Kim,Bard,Suzu,Slayer,,,,,,,,,,,,,,,,
+Thu,Thaemine 1,Akido,Paladin,Nezu,Sorc,Suzu,Arcana,Michi,Breaker,Kim,Bard,Sahra,Slayer,Alice,Glavier,Oxy,WD2,,,,,,,,,,,,,,,,
+Thu,Thaemine 2,Lily,Bard,Neo,Sorc,Krabby,Arcana,Kim,DB,Thug,Bard,Resake,Breaker,Michi,Reaper,Nezu,Sorc3,,,,,,,,,,,,,,,,
+Thu,Thaemine 5,Krabby,Pally,Lily,Reaper,Lenn,DB,Neo,GL,Kim,Artist,Sahra,SH,Michi,Soup,Nezu,Soup,,,,,,,,,,,,,,,,
+Thu,Thaemine 7,Neo,Paladin,Lily,Arcana,Kim,Sf,Suzu,DB,Akido,Artist,Resake,Soup2,Thug,GL,Michi,SH,,,,,,,,,,,,,,,,
+Thu,Thaemine 10,Alice,Artist2,Thug,Scrapper,Lenn,Deadge,Sahra,DB,Akido,Breaker,Michi,Berzerker,,,,,,,,,,,,,,,,,,,,
+Thu,Aegir NM,Krabby,Paladin,Lily,Reaper,Neo,GL,Oxy,Soup2,Suzu,Artist,Akido,SF2,Michi,SH,Nezu,Sorc2,,,,,,,,,,,,,,,,
+Thu,Echidna,Thug,Bard,Akido,Breaker,Oxy,WD2,Alice,Glaive,Sahra,Paladin,Michi,Reaper,Neo,Scrapper,,,,,,,,,,,,,,,,,,
+Thu,Echidna,Akido,Artist,Suzu,Slayer,Michi,Soup,Alice,GS,Sahra,Artist,Thug,Destro,,,,,,,,,,,,,,,,,,,,
+Tue,behemoth,Pats,Bard3,Tobi,Slayer,Alice,Glaive,Lenn,Deadge,Suzu,Bard,Lily,Sorc,Krabby,Arcana2,Akido,Sf,Kim,Bard,Thug,Breaker,Nezu,DPS,Neo,Scrapper,Sahra,SH,,,,,,
+Tue,Aegir HM,Alice,Artist,Tobi,DB2,Pats,GS,Lenn,Deadge,Suzu,Bard,Kim,Breaker,Lily,Sorc,Krabby,Arcana2,,,,,,,,,,,,,,,,
+Tue,Aegir HM,Pats,Bard2,Tobi,Slayer,Kim,DB,Alice,Arcana,Michi,Breaker,Nezu,Sorc,,,,,,,,,,,,,,,,,,,,
+Wed,Thaemine 3,Suzu,Bard,Lily,Sorc,Krabby,Arcana2,Kim,Breaker,Sahra,Paladin,Oxy,Soup2,Nezu,Sorc2,Thug,WD,,,,,,,,,,,,,,,,
+Wed,Thaemine 4,Nezu,Paladin,Akido,Sf,Resake,Soup,Lenn,Soup,Sahra,Artist,Suzu,Slayer,Neo,Scrapper,Alice,GS,,,,,,,,,,,,,,,,
+Wed,Thaemine 6,Lily,Artist,Neo,Breaker,Krabby,Aero,Suzu,Arcana2,Thug,Breaker,Alice,Arcana,Akido,SF2,,,,,,,,,,,,,,,,,,
+Wed,Thaemine 8,Lily,Bard2,Neo,Soup,Krabby,WD,Kim,SF2,Suzu,Artist,Oxy,Soup,Resake,Sorc,Akido,Aero,,,,,,,,,,,,,,,,
+Wed,Thaemine 9,Alice,Artist,Nezu,Breaker,Oxy,WD,Sahra,Soup,Thug,Destro,Resake,DB,,,,,,,,,,,,,,,,,,,,
+Wed,Aegir HM,Neo,Paladin,Lily,Arcana,Lenn,DB,Kim,Sf,Akido,Paladin,Thug,Scrapper,Oxy,WD,,,,,,,,,,,,,,,,,,
+Wed,G4,Neo,Pala,Lily,Arcana,Kim,SF,Lenn,DB,Suzu,Artist,Resake,Soup2,Thug,Destro,Alice,GS,,,,,,,,,,,,,,,,
+Wed,Aegir HM,Lily,Bard,Neo,Sorc,Krabby,Arcana,Resake,Soup,Sahra,Soup,Nezu,Breaker,,,,,,,,,,,,,,,,,,,,

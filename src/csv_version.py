@@ -97,115 +97,127 @@ def get_len_of_raid_day(raids):
     res = len(raids)
     raid_names = [raid['name'] for raid in raids]
     behemoth_counter = raid_names.count("Behemoth")
-    res =- behemoth_counter
-    return res // 1
+    result = res - behemoth_counter
+
+    return int(result)
 
 
-def schedule_raids(raids, days_of_week, max_raids_per_day=8, max_backtrack_attempts=2):
-    scheduled_raids = defaultdict(list)
-    failed_raids = []
-    unscheduled_raids = []
+def schedule_raids(raids, days_of_week, initial_max_raids_per_day=6, max_backtrack_attempts=3):
     custom_order = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue"]
-    # Function to check if a raid can be scheduled on a specific day
+
+    def raid_priority(raid):
+        raid_members = [member["name"] for member in raid["members"]]
+        return min(len(member_availability.get(member, set())) for member in raid_members)
+
     def can_schedule(raid, day):
         raid_members = [member["name"] for member in raid["members"]]
         return all(day in member_availability.get(member, set()) for member in raid_members)
 
-    # Function to try to schedule all raids
-    def try_schedule():
-        for raid in raids:
-            raid_members = [member["name"] for member in raid["members"]]
-            available_days = set(days_of_week)
-
-            # Find valid days for each raid by checking member availability
-            for member in raid_members:
-                available_days  &= member_availability.get(member, set())
-
-            available_days = sorted(available_days, key= custom_order.index)
-            # Try to schedule the raid on one of the valid days
-            scheduled = False
-            for day in sorted(available_days, key= custom_order.index):
-                if get_len_of_raid_day(scheduled_raids[day]) < max_raids_per_day:
-                    scheduled_raids[day].append(raid)
-                    raid["timeslot"] = day
-                    scheduled = True
-                    break
-
-            if not scheduled:
-                failed_raids.append(raid)
-
-        return not failed_raids  # If no failed raids, all are scheduled
-
-    # Try greedy scheduling
-    success = try_schedule()
-
-    # Backtracking attempts
-    backtrack_attempts = 0
-    while not success and backtrack_attempts < max_backtrack_attempts:
-        print(f"Backtracking attempt {backtrack_attempts + 1}...")
-
-        # Backtrack by attempting to move already scheduled raids to make space
-        for raid in failed_raids[:]:
-            raid_members = [member["name"] for member in raid["members"]]
-            available_days = set(days_of_week)
-
-            for member in raid_members:
-                available_days &= member_availability.get(member, set())
-            available_days = sorted(available_days, key= custom_order.index)
-            # Try to find an available day and move an already scheduled raid if necessary
-            for day in sorted(available_days, key= custom_order.index):
-                if get_len_of_raid_day(scheduled_raids[day]) < max_raids_per_day:
-                    scheduled_raids[day].append(raid)
-                    raid["timeslot"] = day
-                    failed_raids.remove(raid)
-                    break
-
-        # Check if there are any failed raids remaining after backtracking
-        success = not failed_raids
-        backtrack_attempts += 1
-
-    # If there are still unscheduled raids after two backtracking attempts, increase max raids per day
-    if not success and backtrack_attempts >= max_backtrack_attempts:
-        print(f"Could not schedule all raids after {max_backtrack_attempts} backtracking attempts. Increasing max raids per day.")
-        max_raids_per_day += 2  # Increase max raids per day by 3
-        # Retry scheduling with the updated max raids per day
+    max_raids_per_day = initial_max_raids_per_day
+    hard_limit = 12
+    while max_raids_per_day <= hard_limit:
+        print(f"Attempting scheduling with max_raids_per_day = {max_raids_per_day}...")
         scheduled_raids = defaultdict(list)
         failed_raids = []
+        load_per_day = {day: 0 for day in days_of_week}
 
-        # Try scheduling again with increased max raids per day
-        success = try_schedule()
+        # Separate "Thaemine" raids
+        thaemine_raids = [raid for raid in raids if "Thaemine" in raid["name"]]
+        other_raids = [raid for raid in raids if raid not in thaemine_raids]
+        other_raids.sort(key=raid_priority)
 
-        # If there are still failed raids after the second attempt, we try backtracking again
-        if not success:
-            backtrack_attempts = 0
-            while not success and backtrack_attempts < max_backtrack_attempts:
-                print(f"Backtracking attempt {backtrack_attempts + 1}...")
+        # Schedule Thaemine raids first
+        def schedule_thaemine_raids():
+            for raid in thaemine_raids:
+                raid_members = [member["name"] for member in raid["members"]]
+                available_days = set(days_of_week)
 
-                # Backtrack again to try and schedule the failed raids
-                for raid in failed_raids[:]:
-                    raid_members = [member["name"] for member in raid["members"]]
-                    available_days = set(days_of_week)
+                for member in raid_members:
+                    available_days &= member_availability.get(member, set())
 
-                    for member in raid_members:
-                        available_days &= member_availability.get(member, set())
-                    available_days = sorted(available_days, key= custom_order.index)
-                    # Try to find an available day and move an already scheduled raid if necessary
-                    for day in sorted(available_days):
-                        if len(scheduled_raids[day]) < max_raids_per_day:
-                            scheduled_raids[day].append(raid)
-                            raid["timeslot"] = day
-                            failed_raids.remove(raid)
-                            break
+                # Prioritize the start of the week for Thaemine raids
+                available_days = sorted(available_days, key=custom_order.index)
+                scheduled = False
+                for day in available_days:
+                    if len(scheduled_raids[day]) < max_raids_per_day:  # Ensure it fits the day's cap
+                        scheduled_raids[day].append(raid)
+                        raid["timeslot"] = day
+                        scheduled = True
+                        break
 
-                # Check if there are any failed raids remaining after the second backtracking attempt
-                success = not failed_raids
-                backtrack_attempts += 1
+                if not scheduled:
+                    failed_raids.append(raid)
 
-    # After the backtracking attempts, store unscheduled raids
-    if failed_raids:
-        unscheduled_raids = failed_raids
+        def try_schedule_other_raids():
+            for raid in other_raids:
+                raid_members = [member["name"] for member in raid["members"]]
+                available_days = set(days_of_week)
 
-    return scheduled_raids, unscheduled_raids, success
+                for member in raid_members:
+                    available_days &= member_availability.get(member, set())
+
+                # Sort available days by load and custom order
+                available_days = sorted(
+                    available_days, key=lambda d: (load_per_day[d], custom_order.index(d))
+                )
+
+                scheduled = False
+                for day in available_days:
+                    if load_per_day[day] < max_raids_per_day:
+                        scheduled_raids[day].append(raid)
+                        load_per_day[day] += 1
+                        raid["timeslot"] = day
+                        scheduled = True
+                        break
+
+                if not scheduled:
+                    failed_raids.append(raid)
+
+            return not failed_raids
+
+        def backtrack():
+            for raid in failed_raids[:]:
+                raid_members = [member["name"] for member in raid["members"]]
+                available_days = set(days_of_week)
+
+                for member in raid_members:
+                    available_days &= member_availability.get(member, set())
+
+                available_days = sorted(
+                    available_days, key=lambda d: (load_per_day[d], custom_order.index(d))
+                )
+
+                for day in available_days:
+                    if load_per_day[day] < max_raids_per_day:
+                        scheduled_raids[day].append(raid)
+                        load_per_day[day] += 1
+                        raid["timeslot"] = day
+                        failed_raids.remove(raid)
+                        break
+
+            return not failed_raids
+
+        # Schedule Thaemine raids first
+        schedule_thaemine_raids()
+
+        # Schedule other raids
+        success = try_schedule_other_raids()
+
+        backtrack_attempts = 0
+        while not success and backtrack_attempts < max_backtrack_attempts:
+            print(f"Backtracking attempt {backtrack_attempts + 1}...")
+            success = backtrack()
+            backtrack_attempts += 1
+
+        if success:
+            print("Scheduling successful!")
+            return scheduled_raids, failed_raids, success
+
+        print(f"Scheduling failed with max_raids_per_day = {max_raids_per_day}. Increasing limit...")
+        max_raids_per_day += 2
+
+    print("Scheduling failed even after reaching the hard limit.")
+    return {}, raids, False
 
 
 scheduled_raids, unscheduled_raids, success = schedule_raids(raids, days_of_week)
@@ -336,30 +348,31 @@ for timeslot, group in grouped_raids:
     print("exit")
 flattened_data = []
 
+# Determine the maximum number of members in any raid
+max_members = max(len(row['members']) if isinstance(row['members'], list) else 0 for _, group in grouped_raids for _, row in group.iterrows())
+
 # Loop through the grouped raids
 for timeslot, group in grouped_raids:
-    # Iterate over each row in the DataFrame
     for _, row in group.iterrows():
-        # Extract raid name and members
         raid_name = row['name']
-        members = row['members']  # This should be a list of dictionaries
+        members = row['members']
 
         # Check if members is valid
         if isinstance(members, list):
-            # Concatenate member names and classes into a single string
-            member_names = [member['name'] for member in members]
-            member_classes = [member['class'] for member in members]
+            # Create a row dictionary
+            row_data = {'Timeslot': timeslot, 'Raid': raid_name}
 
-            # Join them into a single string (comma-separated)
-            member_names_str = ", ".join(member_names)
-            member_classes_str = ", ".join(member_classes)
+            # Populate member and class columns
+            for i, member in enumerate(members):
+                row_data[f'Member{i+1}'] = member['name']
+                row_data[f'Class{i+1}'] = member['class']
 
-            flattened_data.append({
-                'Timeslot': timeslot,
-                'Raid': raid_name,
-                'Member Names': member_names_str,
-                'Member Classes': member_classes_str,
-            })
+            # Fill empty columns if members are fewer than the max
+            for i in range(len(members), max_members):
+                row_data[f'Member{i+1}'] = None
+                row_data[f'Class{i+1}'] = None
+
+            flattened_data.append(row_data)
         else:
             print(f"Unexpected data format in members: {members}")
 
@@ -370,10 +383,6 @@ df = pd.DataFrame(flattened_data)
 csv_file = "grouped_raids.csv"
 df.to_csv(csv_file, index=False)
 print(f"CSV file saved: {csv_file}")
-
-html_file = "grouped_raids.html"
-df.to_html(html_file, index=False, border=1)
-print(f"HTML file saved: {html_file}")
 
 
 def separate_name_class(members):
@@ -483,13 +492,28 @@ x = pulp.LpVariable.dicts("x", (range(n), range(n)), cat='Binary')
 prob += pulp.lpSum(distance_matrix[i][j] * x[i][j] for i in range(n) for j in range(n) if i != j)
 
 # Constraints:
-# 1. Each list must be visited exactly once (entering)
+# 1. Each list must be entered exactly once
 for i in range(n):
     prob += pulp.lpSum(x[j][i] for j in range(n) if j != i) == 1, f"Enter_list_{i}"
 
-# 2. Each list must be visited exactly once (leaving)
+# 2. Each list must be left exactly once, except for the last one
 for i in range(n):
     prob += pulp.lpSum(x[i][j] for j in range(n) if i != j) == 1, f"Leave_list_{i}"
+
+# 3. First node has no incoming edges (it is the start of the path)
+prob += pulp.lpSum(x[j][0] for j in range(1, n)) == 0, "First_node_no_incoming"
+
+# 4. Last node has no outgoing edges (it is the end of the path)
+prob += pulp.lpSum(x[n-1][j] for j in range(n-1)) == 0, "Last_node_no_outgoing"
+
+# 5. Ensure the path is continuous (subtour elimination)
+u = pulp.LpVariable.dicts("u", range(n), lowBound=0, upBound=n-1, cat='Integer')
+
+# Subtour elimination constraint
+for i in range(1, n):
+    for j in range(1, n):
+        if i != j:
+            prob += u[i] - u[j] + (n-1) * x[i][j] <= n-2, f"Subtour_{i}_{j}"
 
 # Solve the ILP
 prob.solve()
@@ -550,3 +574,4 @@ for i,a in enumerate(prob.variables()):
 
 
 
+print(unscheduled_raids)
